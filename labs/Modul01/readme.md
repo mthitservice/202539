@@ -17,3 +17,9 @@ echo \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
 ```
+
+## Paketliste aktuallisieren und Docker installieren
+```
+sudo apt update
+sudo apt install docker-ce docker-ce-cli containerd.io -y
+```
