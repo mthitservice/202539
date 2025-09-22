@@ -23,3 +23,9 @@ echo \
 sudo apt update
 sudo apt install docker-ce docker-ce-cli containerd.io -y
 ```
+
+## Docker Dienst aktivieren und starten
+```bash
+sudo systemctl enable docker
+sudo systemctl start docker
+```
