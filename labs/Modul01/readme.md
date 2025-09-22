@@ -29,3 +29,8 @@ sudo apt install docker-ce docker-ce-cli containerd.io -y
 sudo systemctl enable docker
 sudo systemctl start docker
 ```
+
+## (Optional) Docker ohne sudo
+```bash
+sudo usermod -aG docker $USER
+```
