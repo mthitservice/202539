@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: /../dockerimage
+    ports:
+      - "${TPORT}:${PORT}"
+    environment:
+      - DEBUG=${DEBUG}
+      - ENV=${ENV}
+    volumes:
+      - .:/app
+    depends_on:
+      - backend 
+  backend:
+    image: postgres:15
+    
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+volumes:
+  pgdata:

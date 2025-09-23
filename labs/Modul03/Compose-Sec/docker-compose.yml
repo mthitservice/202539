@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: /../dockerimage
+    ports:
+      - "${TPORT}:${PORT}"
+    environment:
+      - DEBUG=${DEBUG}
+      - ENV=${ENV}
+    volumes:
+      - .:/app
+    depends_on:
+      - backend 
+  backend:
+    image: postgres:15
+
+    secrets:
+      - db_password
+    
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: /run/secrets/db_password
+volumes:
+  pgdata:
+   
+secrets:
+  db_password:
+    file: ./db_password.txt

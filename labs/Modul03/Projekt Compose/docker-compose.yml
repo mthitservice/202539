@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: /../dockerimage
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/app
+    depends_on:
+      - backend 
+  backend:
+    image: postgres:15
+    
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: mydatabase
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+volumes:
+  pgdata:
