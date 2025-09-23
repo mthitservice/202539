@@ -3,6 +3,10 @@ documentation/*
 presentation/*
 documentation
 presentation
+# Labs
+labs/Modul02/*
+labs/Modul03/*
+labs/Modul04/*
 # Logs
 logs
 *.log
