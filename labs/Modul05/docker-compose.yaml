@@ -5,10 +5,10 @@ services:
     image: gitlab/gitlab-ce:latest  # Oder gitlab-ce für die Community Edition
     container_name: gitlab
     restart: always
-    hostname: 'lxdh01.local'
+    hostname: 172.20.10.3
     environment:
       GITLAB_OMNIBUS_CONFIG: |
-        external_url 'http://localhost:8929'
+        external_url 'http://172.20.10.3:8929'
         gitlab_rails['gitlab_shell_ssh_port'] = 2224
     ports:
       - '8929:80'      # Web UI
