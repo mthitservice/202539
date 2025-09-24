@@ -1,0 +1,30 @@
+
+version: '3.8'
+
+services:
+  frontend:
+    build: ./frontend_api
+    container_name: frontend
+    networks:
+      - webnet
+
+  backend:
+    build: ./leichtes_backend
+    container_name: backend
+    networks:
+      - webnet
+
+  proxy:
+    build: ./nginx_proxy
+    container_name: proxy
+    ports:
+      - "80:80"
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - webnet
+
+networks:
+  webnet:
+    driver: bridge
