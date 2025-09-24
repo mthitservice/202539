@@ -4,7 +4,10 @@ services:
   frontend:
     build: /../dockerimage
     ports:
-      - "8080:80"
+      - "${TPORT}:${PORT}"
+    environment:
+      - DEBUG=${DEBUG}
+      - ENV=${ENV}
     volumes:
       - .:/app
     depends_on:
@@ -15,8 +18,8 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
     environment:
-      POSTGRES_DB: mydatabase
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
 volumes:
   pgdata:

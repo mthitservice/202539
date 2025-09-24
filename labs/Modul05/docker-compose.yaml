@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  gitlab:
+    image: gitlab/gitlab-ce:latest  # Oder gitlab-ce für die Community Edition
+    container_name: gitlab
+    restart: always
+    hostname: 'lxdh01.local'
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://localhost:8929'
+        gitlab_rails['gitlab_shell_ssh_port'] = 2224
+    ports:
+      - '8929:80'      # Web UI
+      - '443:443'      # HTTPS (optional)
+      - '2224:22'      # SSH-Zugriff (für Git über SSH)
+    volumes:
+      - './config:/etc/gitlab'
+      - './logs:/var/log/gitlab'
+      - './data:/var/opt/gitlab'
