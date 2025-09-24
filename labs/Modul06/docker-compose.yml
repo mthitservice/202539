@@ -3,19 +3,19 @@ version: '3.8'
 
 services:
   frontend:
-    build: ./frontend_api
+    build: ./frontend
     container_name: frontend
     networks:
       - webnet
 
   backend:
-    build: ./leichtes_backend
+    build: ./backend
     container_name: backend
     networks:
       - webnet
 
   proxy:
-    build: ./nginx_proxy
+    build: ./proxy
     container_name: proxy
     ports:
       - "80:80"
