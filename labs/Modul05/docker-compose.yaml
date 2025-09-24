@@ -11,7 +11,7 @@ services:
         external_url 'http://172.20.10.3:8929'
         gitlab_rails['gitlab_shell_ssh_port'] = 2224
     ports:
-      - '8929:80'      # Web UI
+      - '8929:8929'      # Web UI
       - '443:443'      # HTTPS (optional)
       - '2224:22'      # SSH-Zugriff (für Git über SSH)
     volumes:
