@@ -5,12 +5,16 @@ services:
   frontend:
     build: ./frontend
     container_name: frontend
+    ports:
+      - "8089:80"
     networks:
       - webnet
 
   backend:
     build: ./backend
     container_name: backend
+    ports:
+      - "5000:5000"
     networks:
       - webnet
 
